@@ -551,17 +551,30 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    border-left: 4px solid var(--secondary-blue);
 }
 
 .review-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .review-stars {
     color: var(--warning-yellow);
     font-size: 1.3rem;
-    margin-bottom: 15px;
+}
+
+.review-platform {
+    color: #4285f4;
+    font-size: 1.2rem;
 }
 
 .review-text {
@@ -569,16 +582,25 @@ body {
     margin-bottom: 20px;
     line-height: 1.7;
     font-size: 15px;
+    font-style: italic;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
 }
 
 .review-author {
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .review-date {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-light);
 }
 
@@ -734,44 +756,75 @@ body {
 }
 
 .service-card {
-    background: white;
+    background: linear-gradient(135deg, #002040, #003060);
     padding: 40px 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     transition: all 0.3s;
-    text-align: center;
+    text-align: left;
+    border-left: 5px solid var(--secondary-blue);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.service-card:hover::before {
+    opacity: 1;
 }
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    border-left-color: var(--light-blue);
 }
 
 .service-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 25px;
+    margin-bottom: 25px;
+    transition: all 0.3s;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
 
 .service-icon i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: white;
 }
 
 .service-card h3 {
     font-size: 1.5rem;
-    color: var(--primary-blue);
+    color: white;
     margin-bottom: 20px;
     font-weight: 600;
+    transition: color 0.3s;
+}
+
+.service-card:hover h3 {
+    color: var(--warning-yellow);
 }
 
 .service-card p {
-    color: var(--text-gray);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.7;
     font-size: 15px;
     text-align: left;
@@ -1100,6 +1153,16 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .about-content-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+}
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -1171,6 +1234,47 @@ body {
     }
 }
 
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .top-bar-content {
+        font-size: 12px;
+        justify-content: center;
+    }
+
+    .hours {
+        display: none;
+    }
+
+    .alert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-grid,
+    .news-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .floating-btn span {
+        display: none;
+    }
+
+    .floating-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
 @media (max-width: 480px) {
     .hero-content h1 {
         font-size: 1.5rem;
@@ -1192,6 +1296,18 @@ body {
     .cta-buttons a {
         width: 100%;
         text-align: center;
+    }
+
+    .logo-text h1 {
+        font-size: 1.3rem;
+    }
+
+    .logo-text p {
+        font-size: 0.75rem;
+    }
+
+    .navbar {
+        padding: 12px 0;
     }
 }
 
